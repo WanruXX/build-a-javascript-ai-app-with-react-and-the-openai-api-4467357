@@ -34,13 +34,11 @@ const WeatherDescript = (prompt, weatherData) => {
   return fetch(url, params)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      return data.choices[0].message.content;
     })
     .catch((error) => {
       console.log("Error:", error);
-      return Promise.reject(
-        "Unable to identify a location from your question. Please try again."
-      );
+      return Promise.reject("Unable to fetch weather description.");
     });
 };
 
